@@ -3,15 +3,15 @@
     <b-container fluid="md">
       <h3>Monitor Grooup List</h3>
       <b-table striped hover :items="groups" :fields="fields">
-        <template v-slot:cell(title)="data">
+        <template v-slot:cell(group_name)="data">
           <!-- `data.value` is the value after formatted by the Formatter -->
           <router-link
-            :to="{ name: 'show', params: { seq: data.item.seq }}"
+            :to="{ name: 'view-monitor-group', params: { seq: data.item.seq }}"
             class="link"
           >{{ data.value }}</router-link>
         </template>
       </b-table>
-      <router-link :to="{ name: 'create'}" class="link"><b-button variant="info">Create</b-button></router-link>
+      <router-link :to="{ name: 'create-monitor-group'}" class="link"><b-button variant="info">Create</b-button></router-link>
     </b-container>
   </div>
 </template>
@@ -32,8 +32,20 @@ export default {
         "seq",
         "group_id",
         "group_name",
-        "receiver",
-        "memo"
+        {
+          key: "receiver",
+          label: "Receiver",
+          formatter: (value) => {
+            return value.length>30?value.substr(0, 30):value;
+          }
+        },
+        {
+          key: "memo",
+          label: "Memo",
+          formatter: (value) => {
+            return value.length>20?value.substr(0, 20):value;
+          }
+        }
       ],
       groups: []
     };

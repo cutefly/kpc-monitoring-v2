@@ -6,7 +6,7 @@
         <template v-slot:cell(title)="data">
           <!-- `data.value` is the value after formatted by the Formatter -->
           <router-link
-            :to="{ name: 'show', params: { seq: data.item.seq }}"
+            :to="{ name: 'view', params: { seq: data.item.seq }}"
             class="link"
           >{{ data.value }}</router-link>
         </template>

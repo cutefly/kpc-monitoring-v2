@@ -253,7 +253,7 @@ export default {
           newMonitor = response.data
           newMonitor.seq
           console.log(`response: ${JSON.stringify(response)}`)
-          this.$router.push('/');
+          this.$router.push({ name: 'index' })
         })
         .catch((error) => {
           console.log(error)

@@ -202,7 +202,7 @@ export default {
   created: function() {
     var seq = this.$route.params.seq;
     this.$http.get(`/api/monitors/${seq}`).then(response => {
-      this.monitor = response.data[0];
+      this.monitor = response.data;
       this.keep_monitor = JSON.parse(JSON.stringify(this.monitor));
     });
   },

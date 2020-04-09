@@ -3,7 +3,7 @@ var router = express.Router();
 var monitors = require('../data/monitors.json');
 
 router.get('/', function (req, res, next) {
-    res.send(monitors);
+    res.send(monitors)
 });
 
 router.get('/:seq', function (req, res, next) {
@@ -11,7 +11,7 @@ router.get('/:seq', function (req, res, next) {
     var monitor = monitors.filter(function(monitor) {
         return monitor.seq === seq
     });
-    res.send(monitor)
+    res.send(monitor[0])
 });
 
 router.post('/', function (req, res, next) {

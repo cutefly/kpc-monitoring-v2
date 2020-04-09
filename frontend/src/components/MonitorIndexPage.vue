@@ -29,18 +29,33 @@ export default {
     return {
       fields: [
         "seq",
-        "period",
         {
-          key: "title",
-          label: "타이틀",
-          aaa: "12"
+          key: "period",
+          label: "Period",
+          formatter: (value) => {
+            var picked = this.periods.filter(function(o) {
+              return o.value == value
+            });
+            return picked[0].text;      
+          }
         },
+        "title",
         "monitor_type",
         "use_flag",
         "sender",
         "receiver"
       ],
-      monitors: []
+      monitors: [],
+      periods: [
+        { text: "Select One", value: null },
+        { text: "1 Minute", value: 1 },
+        { text: "5 Minutes", value: 2 },
+        { text: "10 Minutes", value: 3 },
+        { text: "30 Minutes", value: 4 },
+        { text: "1 Hour", value: 5 },
+        { text: "1 Day", value: 6 }
+      ],
+
     };
   }
 };

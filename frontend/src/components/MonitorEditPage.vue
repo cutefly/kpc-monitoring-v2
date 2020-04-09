@@ -18,7 +18,7 @@
           label-cols-sm="4"
           label-cols-lg="2"
           label-align-sm="right"
-          label="Enter title:"
+          label="Title:"
           label-for="title"
         >
           <b-form-input
@@ -40,7 +40,7 @@
           <b-form-select id="monitor_type" v-model="monitor.monitor_type" :options="types" required></b-form-select>
         </b-form-group>
         <b-form-group
-          id="input-group-4"
+          id="fieldset-horizontal"
           label-cols-sm="4"
           label-cols-lg="2"
           label-align-sm="right"
@@ -57,7 +57,7 @@
           ></b-form-textarea>
         </b-form-group>
         <b-form-group
-          id="input-group-3"
+          id="fieldset-horizontal"
           label-cols-sm="4"
           label-cols-lg="2"
           label-align-sm="right"
@@ -67,7 +67,7 @@
           <b-form-select id="check_type" v-model="monitor.check_type" :options="checks" required></b-form-select>
         </b-form-group>
         <b-form-group
-          id="input-group-1"
+          id="fieldset-horizontal"
           label-cols-sm="4"
           label-cols-lg="2"
           label-align-sm="right"
@@ -83,7 +83,7 @@
           ></b-form-input>
         </b-form-group>
         <b-form-group
-          id="input-group-1"
+          id="fieldset-horizontal"
           label-cols-sm="4"
           label-cols-lg="2"
           label-align-sm="right"
@@ -99,7 +99,7 @@
           ></b-form-input>
         </b-form-group>
         <b-form-group
-          id="input-group-1"
+          id="fieldset-horizontal"
           label-cols-sm="4"
           label-cols-lg="2"
           label-align-sm="right"
@@ -121,7 +121,7 @@
           </b-form-radio-group>
         </b-form-group>
         <b-form-group
-          id="input-group-1"
+          id="fieldset-horizontal"
           label-cols-sm="4"
           label-cols-lg="2"
           label-align-sm="right"
@@ -137,7 +137,7 @@
           ></b-form-input>
         </b-form-group>
         <b-form-group
-          id="input-group-1"
+          id="fieldset-horizontal"
           label-cols-sm="4"
           label-cols-lg="2"
           label-align-sm="right"
@@ -153,7 +153,7 @@
           ></b-form-input>
         </b-form-group>
         <b-form-group
-          id="input-group-1"
+          id="fieldset-horizontal"
           label-cols-sm="4"
           label-cols-lg="2"
           label-align-sm="right"
@@ -170,7 +170,7 @@
           ></b-form-input>
         </b-form-group>
         <b-form-group
-          id="input-group-1"
+          id="fieldset-horizontal"
           label-cols-sm="4"
           label-cols-lg="2"
           label-align-sm="right"
@@ -185,8 +185,8 @@
             placeholder="Enter interval"
           ></b-form-input>
         </b-form-group>
-        <b-button type="submit" variant="primary">Submit</b-button>
-        <b-button type="reset" variant="danger">Reset</b-button>
+        <b-button type="submit" variant="primary">Submit</b-button>&nbsp;
+        <b-button type="reset" variant="danger">Reset</b-button>&nbsp;
         <router-link :to="{ name: 'index'}" class="link"><b-button variant="info">List</b-button></router-link>
       </b-form>
       <b-card class="mt-3" header="Form Data Result">
@@ -245,7 +245,19 @@ export default {
   methods: {
     onSubmit(evt) {
       evt.preventDefault();
-      alert(JSON.stringify(this.form));
+      console.log(`request: ${JSON.stringify(this.monitor)}`);
+
+      var newMonitor;
+      this.$http.put(`/api/monitors/${this.monitor.seq}`, this.monitor)
+        .then((response) => {
+          newMonitor = response.data
+          newMonitor.seq
+          console.log(`response: ${JSON.stringify(response)}`)
+          this.$router.push('/');
+        })
+        .catch((error) => {
+          console.log(error)
+        })
     },
     onReset(evt) {
       evt.preventDefault();

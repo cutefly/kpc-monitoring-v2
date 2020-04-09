@@ -2,8 +2,7 @@
   <div>
     <b-container fluid="md">
       <h3>Monitor List</h3>
-      <b-table striped hover :items="monitors" :fields="fields" caption-top>
-        <template v-slot:table-caption>모니터링 리스트</template>
+      <b-table striped hover :items="monitors" :fields="fields">
         <template v-slot:cell(title)="data">
           <!-- `data.value` is the value after formatted by the Formatter -->
           <router-link

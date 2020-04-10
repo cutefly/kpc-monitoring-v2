@@ -36,14 +36,14 @@ export default {
           key: "receiver",
           label: "Receiver",
           formatter: (value) => {
-            return value.length>30?value.substr(0, 30):value;
+            return value.length>30?`${value.substr(0, 30)} ...`:value;
           }
         },
         {
           key: "memo",
           label: "Memo",
           formatter: (value) => {
-            return value.length>20?value.substr(0, 20):value;
+            return value.length>20?`${value.substr(0, 20)} ...`:value;
           }
         }
       ],

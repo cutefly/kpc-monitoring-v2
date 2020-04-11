@@ -24,12 +24,12 @@ export const router = new Router({
       component: Index
     },
     {
-      path: '/view/:seq',
+      path: '/:seq/view',
       name: 'view',
       component: View
     },
     {
-      path: '/edit/:seq',
+      path: '/:seq/edit',
       name: 'edit',
       component: Edit
     },
@@ -44,12 +44,12 @@ export const router = new Router({
       component: IndexMonitorGroup
     },
     {
-      path: '/monitor-group/view/:seq',
+      path: '/monitor-group/:seq/view',
       name: 'view-monitor-group',
       component: ViewMonitorGroup
     },
     {
-      path: '/monitor-group/edit/:seq',
+      path: '/monitor-group/:seq/edit',
       name: 'edit-monitor-group',
       component: EditMonitorGroup
     },

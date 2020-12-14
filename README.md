@@ -1,5 +1,18 @@
 # kpc-monitoring-v2
 
+## 프로젝트 생성
+
+```
+npm install -g @vue/cli 
+vue create frontend // frontend 폴더 생성
+
+npm install -g express-generator
+express --view=ejs backend // backend 폴더 생성
+
+# install bootstrap-vue With npm(frontend)
+npm install vue bootstrap-vue bootstrap
+```
+
 ### frontend
 
 ```
